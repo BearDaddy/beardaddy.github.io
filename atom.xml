@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>醉心的旋律</title>
+  
+  <subtitle>键盘可以弹奏旋律，也可以弹奏代码。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-08-26T22:43:45.554Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>周恒</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>将Github上的《The Way to Go(中文版)》转换成pdf</title>
+    <link href="http://yoursite.com/2018/08/26/Generate-PDF-from-Gitbooks/"/>
+    <id>http://yoursite.com/2018/08/26/Generate-PDF-from-Gitbooks/</id>
+    <published>2018-08-26T10:26:48.000Z</published>
+    <updated>2018-08-26T22:43:45.554Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近看到一本不错的Golang入门教程<a href="https://github.com/Unknwon/the-way-to-go_ZH_CN" title="The Way to GO" target="_blank" rel="noopener">《The Way to Go（中文版）》</a> ,书是用Markdown编写的，并托管在Github上，不太方便阅读，所以把它转换成PDF版本。</p><p>需要的工具包括：</p><ul><li>gitbook-cli</li><li>gitbook</li><li>calibre</li></ul><p>基本原理是用gitbook调用calibre里面的ebook-convert工具，将gitbook转换成pdf。</p><p>下面是转换步骤：</p><ol><li><p>下载源文件</p><p>将文件下载到本地，解压。</p></li><li><p>安装必要的工具</p><ul><li><p>npm install gitbook-cli -g</p></li><li><p>npm install gitbook -g</p></li><li><p>calibre到网站下载安装</p></li></ul></li><li><p>处理源文件</p><p>直接转换这本书会出现一点小问题，所以要先处理一下。</p><ul><li><p>GitBook使用简单的目录结构，通过 <code>SUMMARY.md</code> 目录文件来确定哪些文件被转换，原书目录是<code>TOC.md</code>，因此将<code>TOC.md</code>改名为<code>SUMMARY.md</code>。</p></li><li><p>原书的图片链接都带上了<code>?raw=true</code>参数，导致转换后的pdf文件里图片无法正确显示，需要全部删除：</p><p><code>grep -rl &quot;?raw=true&quot; ./ | xargs sed -i &quot;&quot; &#39;s/?raw=true//g’</code></p></li></ul></li><li><p>生成pdf</p><p><code>gitbook pdf ./ ./book.pdf</code></p></li></ol><p>转换好的文件可以在这里<a href="https://pan.baidu.com/s/1Cs7qxO5wqNjDwra9GBEOCA" title="GO入门指南" target="_blank" rel="noopener">下载</a>。（密码: 4iqx）</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近看到一本不错的Golang入门教程&lt;a href=&quot;https://github.com/Unknwon/the-way-to-go_ZH_CN&quot; title=&quot;The Way to GO&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《The Way
+      
+    
+    </summary>
+    
+    
+      <category term="技巧" scheme="http://yoursite.com/tags/%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/08/26/hello-world/"/>
+    <id>http://yoursite.com/2018/08/26/hello-world/</id>
+    <published>2018-08-26T01:25:58.680Z</published>
+    <updated>2018-08-26T01:25:58.681Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
